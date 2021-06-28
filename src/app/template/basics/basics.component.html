@@ -65,7 +65,10 @@
             name="stock"
             type="number"
             class="form-control"
-            placeholder="Product stock">
+            customMin
+            [min]="0"
+            placeholder="Product stock"
+            required>
         </div>
       </div>
 
@@ -97,5 +100,8 @@
 
     <span>Value</span>
     <pre>{{ myForm.value | json }}</pre>
+
+    <span>Custom Directive</span>
+    <pre>{{ myForm.controls.stock?.errors | json }}</pre>
   </div>
 </div>
