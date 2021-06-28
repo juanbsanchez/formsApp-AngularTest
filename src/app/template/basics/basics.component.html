@@ -19,7 +19,7 @@
             id="product"
             type="text"
             class="form-control"
-            ngModel
+            [ngModel]="initForm.product"
             name="product"
             placeholder="Product name"
             required
@@ -39,7 +39,7 @@
         <div class="col-sm-9">
           <input
             id="price"
-            ngModel
+            [ngModel]="initForm.price"
             name="price"
             type="number"
             class="form-control"
@@ -61,7 +61,7 @@
         <div class="col-sm-9">
           <input
             id="stock"
-            ngModel
+            [ngModel]="initForm.stock"
             name="stock"
             type="number"
             class="form-control"
