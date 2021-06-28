@@ -21,6 +21,11 @@ export class BasicsComponent implements OnInit {
       && this.myForm?.controls.product?.touched;
   }
 
+  validPrice(): boolean{
+    return this.myForm?.controls.price?.value < 0
+      && this.myForm?.controls.price?.touched;
+  }
+
   save(){
     console.log(this.myForm);
   }
