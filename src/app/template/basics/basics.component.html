@@ -7,7 +7,7 @@
     <form
       autocomplete="off"
       #myForm="ngForm"
-    (ngSubmit)="save(myForm)"
+    (ngSubmit)="save()"
     >
       <!--Product-->
       <div class="mb-3 row">
@@ -26,7 +26,7 @@
             minlength="3">
           <span
             class="form-text text-danger"
-            *ngIf="myForm.controls.product?.invalid && myForm.controls.product?.touched">
+            *ngIf="validName()">
             Must have 3 letters
           </span>
         </div>
