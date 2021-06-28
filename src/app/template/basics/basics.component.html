@@ -3,18 +3,26 @@
 
 <div class="row">
   <div class="col">
-    <form>
+
+    <form
+      autocomplete="off"
+      #myForm="ngForm"
+    (ngSubmit)="save(myForm)"
+    >
       <!--Product-->
       <div class="mb-3 row">
-        <label for="products" class="col-sm-3 col-form-label">
-          Products
+        <label for="product" class="col-sm-3 col-form-label">
+          Product
         </label>
         <div class="col-sm-9">
           <input
-            id="products"
+            id="product"
             type="text"
             class="form-control"
-            placeholder="Product name">
+            ngModel
+            name="product"
+            placeholder="Product name"
+            required>
           <span class="form-text text-danger">Must have 3 letters</span>
         </div>
       </div>
@@ -26,6 +34,8 @@
         <div class="col-sm-9">
           <input
             id="price"
+            ngModel
+            name="price"
             type="number"
             class="form-control"
             placeholder="Product price">
@@ -39,6 +49,8 @@
         <div class="col-sm-9">
           <input
             id="stock"
+            ngModel
+            name="stock"
             type="number"
             class="form-control"
             placeholder="Product stock">
@@ -55,5 +67,14 @@
         </div>
       </div>
     </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{ myForm.valid }}</pre>
+    <span>Value</span>
+    <pre>{{ myForm.value | json }}</pre>
   </div>
 </div>
