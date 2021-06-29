@@ -1,1 +1,58 @@
-<p>dinamics works!</p>
+<h2>Template: <small>Dinamics</small></h2>
+<hr/>
+
+<form (ngSubmit)="save()" autocomplete="off" #myForm="ngForm">
+
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Name</label>
+    <div class="col-sm-9">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Name"
+        ngModel
+        name="inputName"
+        required>
+      <span
+        class="form-text text-danger"
+        *ngIf="myForm.controls.inputName?.invalid && myForm.controls.inputName?.touched">
+            This field is required
+          </span>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Add</label>
+    <div class="col-sm-9">
+
+      <div class="input-group">
+        <input
+          placeholder="Add favorite"
+          class="form-control">
+        <button class="btn btn-outline-primary" type="button">Add</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Favorites</label>
+    <div class="col-sm-9">
+      <input class="form-control mb-1">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <button
+        [disabled]="myForm.controls.inputName?.invalid"
+        class="btn btn-primary float-end"
+      type="button"
+      (click)="save()">
+        Save
+      </button>
+    </div>
+  </div>
+
+
+</form>

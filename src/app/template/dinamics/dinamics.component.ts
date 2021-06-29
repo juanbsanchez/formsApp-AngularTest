@@ -13,4 +13,8 @@ export class DinamicsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  save(){
+    console.log('fdssfd');
+  }
+
 }

@@ -19,7 +19,8 @@ import {CustomMinDirective} from "./directives/custom-min.directive";
   imports: [
     CommonModule,
     FormsModule,
-    TemplateRoutingModule
+    TemplateRoutingModule,
+    FormsModule
   ]
 })
 export class TemplateModule { }
