@@ -37,4 +37,8 @@ export class DinamicsComponent {
     console.log('fdssfd');
   }
 
+  delete(i: number){
+    this.person.favs.splice(i,1);
+  }
+
 }
