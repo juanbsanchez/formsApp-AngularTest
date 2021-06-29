@@ -18,6 +18,8 @@ interface Favs {
 })
 export class DinamicsComponent {
 
+  newGame: string = '';
+
   person: Person = {
     name: 'John',
     favs: [
@@ -32,6 +34,14 @@ export class DinamicsComponent {
     ]
   }
 
+  addGame(){
+    const newFavGame: Favs = {
+      id: this.person.favs.length + 1,
+      name: this.newGame
+    }
+    this.person.favs.push({...newFavGame});
+    this.newGame = '';
+  }
 
   save(){
     console.log('fdssfd');
