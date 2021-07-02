@@ -1,1 +1,95 @@
-<p>basics works!</p>
+<h2>Reactive: Basics</h2>
+<hr/>
+
+<div class="row">
+  <div class="col">
+
+    <form
+      autocomplete="off"
+      [formGroup]="myForm"
+    >
+      <!--Product-->
+      <div class="mb-3 row">
+        <label for="product" class="col-sm-3 col-form-label">
+          Product
+        </label>
+        <div class="col-sm-9">
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            placeholder="Product name">
+          <span
+            class="form-text text-danger">
+            Must have 3 letters
+          </span>
+        </div>
+      </div>
+      <!--Price-->
+      <div class="mb-3 row">
+        <label for="price" class="col-sm-3 col-form-label">
+          Price
+        </label>
+        <div class="col-sm-9">
+          <input
+            id="price"
+            name="price"
+            type="number"
+            class="form-control"
+            placeholder="Product price"
+            required
+            min="0">
+          <span
+            class="form-text text-danger">
+            Price value must be 0 or higher
+          </span>
+        </div>
+      </div>
+      <!--Stocks-->
+      <div class="mb-3 row">
+        <label for="stock" class="col-sm-3 col-form-label">
+          Stock
+        </label>
+        <div class="col-sm-9">
+          <input
+            id="stock"
+            name="stock"
+            type="number"
+            class="form-control"
+            customMin
+            [min]="0"
+            placeholder="Product stock"
+            required>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button
+            class="btn btn-primary float-end"
+            type="submit">
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+
+    <span>Valid</span>
+    <pre>{{ myForm.valid }}</pre>
+
+    <span>Pristine</span>
+    <pre>{{ myForm.pristine }}</pre>
+
+    <span>Touched</span>
+    <pre>{{ myForm.touched }}</pre>
+
+    <span>Value</span>
+    <pre>{{ myForm.value | json }}</pre>
+
+  </div>
+</div>
