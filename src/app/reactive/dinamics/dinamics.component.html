@@ -1,1 +1,72 @@
-<p>dinamics works!</p>
+<h2>Template: <small>Dinamics</small></h2>
+<hr />
+
+<form 
+[formGroup]="myForm" 
+(ngSubmit)="save()" 
+autocomplete="off">
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Name</label>
+    <div class="col-sm-9">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Name"
+        formControlName="name"
+        required
+      />
+      <span *ngIf="isValidField('name')" class="form-text text-danger">
+        This field is required
+      </span>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Add</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <input
+          placeholder="Add favorite"
+          name="newGame"
+          (keyup.enter)="addGame()"
+          class="form-control"
+        />
+        <button
+          class="btn btn-outline-primary"
+          type="button"
+          (click)="addGame()"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Favorites</label>
+    <div class="col-sm-9">
+      <div
+        *ngFor="let game of person.favs; let i = index"
+        class="input-group mb-1"
+      >
+        <input name="fav_{{ i }}" class="form-control" required />
+        <button type="button" class="btn btn-outline-danger" (click)="delete()">
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <button class="btn btn-primary float-end" type="button" (click)="save()">
+        Save
+      </button>
+    </div>
+  </div>
+</form>
+
+<span>Person</span>
+<pre>
+  {{ person | json }}
+</pre>
