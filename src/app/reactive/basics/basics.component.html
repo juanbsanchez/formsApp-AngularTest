@@ -5,6 +5,7 @@
   <div class="col">
 
     <form
+      (ngSubmit)="save()"
       autocomplete="off"
       [formGroup]="myForm"
     >
@@ -75,7 +76,6 @@
       <div class="row">
         <div class="col">
           <button
-            [disabled]="myForm.invalid"
             class="btn btn-primary float-end"
             type="submit">
             Save
