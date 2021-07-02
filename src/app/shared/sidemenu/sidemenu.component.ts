@@ -9,6 +9,11 @@ interface MenuItem {
   selector: 'app-sidemenu',
   templateUrl: './sidemenu.component.html',
   styles: [
+    `
+    li{
+      cursor: pointer;
+    }
+    `
   ]
 })
 export class SidemenuComponent{
@@ -19,7 +24,7 @@ export class SidemenuComponent{
       route: './template/basics'
     },
     {
-      text: 'Dinamics',
+      text: 'Dinamics', 
       route: './template/dinamics'
     },
     {

@@ -1,1 +1,68 @@
-<p>switches works!</p>
+<h2>Template: Switches</h2>
+<hr />
+
+<form #myForm="ngForm">
+  <!-- Radios -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Gender</label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input
+          type="radio"
+          class="form-check-input"
+          name="radioGender"
+          id="flexRadioDefault1"
+        />
+        <label id="flexRadioDefault1" class="form-check-label"> Male </label>
+      </div>
+
+      <div class="form-check">
+        <input
+          type="radio"
+          class="form-check-input"
+          name="radioGender"
+          id="flexRadioDefault2"
+        />
+        <label id="flexRadioDefault2" class="form-check-label"> Female </label>
+      </div>
+    </div>
+  </div>
+  <!-- Switches -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Notifications</label>
+    <div class="col-sm-9">
+      <div class="form-check form-switch">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="flexSwitchCheckChecked"
+          checked
+        />
+        <label for="flexSwitchCheckChecked" class="form-check-label"
+          >I want to receive notifications</label
+        >
+      </div>
+    </div>
+  </div>
+  <!-- Checkboxes -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="flexCheckDefault" />
+        <label for="flexCheckDefault" class="form-check-label">
+          Terms and conditions
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit button -->
+  <div class="row">
+      <div class="col">
+          <button class="btn btn-primary float-end">
+              Save
+          </button>
+      </div>
+  </div>
+</form>
