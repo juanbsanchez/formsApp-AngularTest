@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface Person {
   name: string;
@@ -28,10 +28,6 @@ export class DinamicsComponent implements OnInit {
         id: 1,
         name: 'Metal Gear'
       },
-      {
-        id: 2,
-        name: 'Age of Empires'
-      }
     ]
   }
 
@@ -39,8 +35,16 @@ export class DinamicsComponent implements OnInit {
     name: ['', [
       Validators.required,
       Validators.minLength(3)
-    ]]
-  }) 
+    ]],
+    favs: this.fb.array([
+      ['Metal Gear', Validators.required],
+      ['Jurasic Park', Validators.required]
+    ], Validators.required)
+  })
+
+  get favsArr() {
+    return this.myForm.get('favs') as FormArray;
+  }
 
   constructor(private fb: FormBuilder) { }
 
@@ -57,11 +61,11 @@ export class DinamicsComponent implements OnInit {
   }
 
   addGame() {
-    
+
   }
 
   delete() {
-    
+
   }
 
   isValidField(field: string) {

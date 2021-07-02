@@ -44,12 +44,14 @@ autocomplete="off">
 
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Favorites</label>
-    <div class="col-sm-9">
+    <div formArrayName="favs" class="col-sm-9">
       <div
-        *ngFor="let game of person.favs; let i = index"
         class="input-group mb-1"
+        *ngFor="let fav of favsArr.controls; let i = index"
       >
-        <input name="fav_{{ i }}" class="form-control" required />
+        <input class="form-control" 
+        required
+        formControlName="{{ i }}" />
         <button type="button" class="btn btn-outline-danger" (click)="delete()">
           Remove
         </button>
@@ -69,4 +71,14 @@ autocomplete="off">
 <span>Person</span>
 <pre>
   {{ person | json }}
+</pre>
+
+<span>Valid</span>
+<pre>
+    {{ myForm.valid }}
+</pre>
+
+<span>Value</span>
+<pre>
+    {{ myForm.value | json }}
 </pre>
