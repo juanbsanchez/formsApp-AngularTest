@@ -24,6 +24,20 @@ export class SwitchesComponent implements OnInit{
 
   ngOnInit() {
     this.myForm.reset(this.person);
+
+    this.myForm.valueChanges
+      .subscribe(({terms, ...rest}) => {
+        this.person = rest;
+    })
+  }
+
+
+  save() {
+    const formValue = { ...this.myForm.value };
+    delete formValue.terms;
+    console.log(formValue)
+    this.person = formValue;
+  
   }
 
 
