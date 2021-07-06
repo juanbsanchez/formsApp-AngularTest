@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 interface Person {
   name: string;
@@ -42,6 +42,8 @@ export class DinamicsComponent implements OnInit {
     ], Validators.required)
   })
 
+  newFav: FormControl = this.fb.control('', Validators.required);
+
   get favsArr() {
     return this.myForm.get('favs') as FormArray;
   }
@@ -60,17 +62,34 @@ export class DinamicsComponent implements OnInit {
     console.log(this.myForm.value)
   }
 
-  addGame() {
+  addFav() {
+    if (!this.newFav.valid) {
+      return;
+    }
+    /*
+    this.favsArr.push(new FormControl(
+      this.newFav.value,
+      Validators.required
+    )); */
 
+    /* With FormBuilder service */
+    this.favsArr.push(this.fb.control(
+      this.newFav.value,
+      Validators.required
+    ))
+
+    this.newFav.reset();
   }
 
-  delete() {
-
+  delete(id: number) {
+    /* this.favsArr.controls.splice(id, 1) */
+    this.favsArr.removeAt(id);
   }
 
   isValidField(field: string) {
     return this.myForm.controls[field].errors &&
       this.myForm.controls[field].touched;
   }
+
 
 }

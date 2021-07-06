@@ -27,14 +27,14 @@ autocomplete="off">
       <div class="input-group">
         <input
           placeholder="Add favorite"
-          name="newGame"
-          (keyup.enter)="addGame()"
           class="form-control"
+          (keyup.enter)="addFav()"
+          [formControl]="newFav"
         />
         <button
           class="btn btn-outline-primary"
           type="button"
-          (click)="addGame()"
+          (click)="addFav()"
         >
           Add
         </button>
@@ -51,8 +51,8 @@ autocomplete="off">
       >
         <input class="form-control" 
         required
-        formControlName="{{ i }}" />
-        <button type="button" class="btn btn-outline-danger" (click)="delete()">
+        [formControlName]="i" />
+        <button type="button" class="btn btn-outline-danger" (click)="delete(i)">
           Remove
         </button>
       </div>
@@ -81,4 +81,10 @@ autocomplete="off">
 <span>Value</span>
 <pre>
     {{ myForm.value | json }}
+</pre>
+
+<span>Add game</span>
+<pre>
+    {{ newFav.valid }}
+    {{ newFav.value | json }}
 </pre>
