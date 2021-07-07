@@ -43,10 +43,16 @@
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Username</label>
         <div class="col-sm-9">
-          <input 
+          <input
+          formControlName="username"
           class="form-control" 
           placeholder="Username code" 
           type="text" />
+          <span 
+          *ngIf="invalidInput('username')"
+          class="form-text text-danger">
+            Username can't be John
+          </span>
         </div>
       </div>
 
@@ -87,3 +93,6 @@
 
 <h2>email</h2>
 <pre>{{myForm.controls.email.errors | json}}</pre>
+
+<h2>Username</h2>
+<pre>{{myForm.controls.username.errors | json}}</pre>
