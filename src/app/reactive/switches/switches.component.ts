@@ -27,7 +27,7 @@ export class SwitchesComponent implements OnInit{
 
     this.myForm.valueChanges
       .subscribe(({terms, ...rest}) => {
-        this.person = rest;
+        this.person = rest; 
     })
   }
 
