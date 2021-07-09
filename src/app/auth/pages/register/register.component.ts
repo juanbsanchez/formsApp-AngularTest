@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { emailPattern, invalidUsername, nameSurnamePattern } from 'src/app/shared/validator/validations';
+import { ValidatorService } from 'src/app/shared/validator/validator.service';
 
 @Component({
   selector: 'app-register',
@@ -9,33 +11,22 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class RegisterComponent implements OnInit {
 
-  // TODO temp
-  nameSurnamePattern: string = '([a-zA-Z]+) ([a-zA-Z]+)';
-  emailPattern: string = '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
-
-  invalidUsername(control: FormControl) {
-    const value: string = control.value?.trim().toLowerCase();
-    if (value === 'john') {
-      return {
-        noJohn: true
-      }
-    }
-    return null;
-  }
-
   myForm: FormGroup = this.fb.group({
     name: ['', [
       Validators.required,
-      Validators.pattern(this.nameSurnamePattern)
+      Validators.pattern(this.vs.nameSurnamePattern)
     ]],
     email: ['', [
       Validators.required,
-    Validators.pattern(this.emailPattern)]],
+    Validators.pattern(this.vs.emailPattern)]],
     username: ['', [
-      Validators.required, this.invalidUsername]]
+      Validators.required, this.vs.invalidUsername]]
   })
  
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private vs: ValidatorService
+  ) { }
 
   ngOnInit(): void {
     this.myForm.reset({
