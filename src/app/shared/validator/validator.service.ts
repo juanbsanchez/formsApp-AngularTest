@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormControl, ValidationErrors } from '@angular/forms';
+import { AbstractControl, FormControl, ValidationErrors } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +22,24 @@ export class ValidatorService {
     return null;
   }
 
+  equalInputs(input1: string, input2: string) {
+    
+    return (formGroup: AbstractControl): ValidationErrors | null => {
+      
+      const pass1 = formGroup.get(input1)?.value;
+      
+      const pass2 = formGroup.get(input2)?.value;
+
+      if (pass1 !== pass2) {
+        formGroup.get(input2)?.setErrors({noEquals: true})
+        return {noEqualInputs: true}
+      }
+      
+      
+      formGroup.get(input2)?.setErrors(null)
+      return null;
+    }
+  }
+
 }
+
