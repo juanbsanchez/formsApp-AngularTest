@@ -57,6 +57,21 @@ export class RegisterComponent implements OnInit {
       && this.myForm.get(input)?.touched;
   }
 
+  emailRequired() {
+    return this.myForm.get('email')?.errors?.required
+      && this.myForm.get('email')?.touched;
+  }
+  
+  emailPattern() {
+    return this.myForm.get('email')?.errors?.pattern
+      && this.myForm.get('email')?.touched;
+  }
+  
+  emailRegistered() {
+    return this.myForm.get('email')?.errors?.emailRegistered
+      && this.myForm.get('email')?.touched;
+  } 
+
   submitForm() {
     console.log(this.myForm.value);
     this.myForm.markAllAsTouched();
