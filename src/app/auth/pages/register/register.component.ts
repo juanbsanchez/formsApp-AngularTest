@@ -16,11 +16,23 @@ export class RegisterComponent implements OnInit {
       Validators.required,
       Validators.pattern(this.vs.nameSurnamePattern)
     ]],
+
     email: ['', [
       Validators.required,
-    Validators.pattern(this.vs.emailPattern)]],
+      Validators.pattern(this.vs.emailPattern)]],
+    
     username: ['', [
-      Validators.required, this.vs.invalidUsername]]
+      Validators.required, this.vs.invalidUsername]],
+    
+    password: ['', [
+      Validators.required,
+      Validators.minLength(6)]],
+    
+    confirmPassword: ['', [
+      Validators.required]],
+    
+  }, {
+    validators: [this.vs.equalInputs('password', 'confirmPassword')]
   })
  
   constructor(
