@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { emailPattern, invalidUsername, nameSurnamePattern } from 'src/app/shared/validator/validations';
 import { ValidatorService } from 'src/app/shared/validator/validator.service';
+import { EmailValidatorService } from 'src/app/shared/validator/email-validator.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
 
     email: ['', [
       Validators.required,
-      Validators.pattern(this.vs.emailPattern)]],
+      Validators.pattern(this.vs.emailPattern)], [this.emailValidator]],
     
     username: ['', [
       Validators.required, this.vs.invalidUsername]],
@@ -37,7 +38,8 @@ export class RegisterComponent implements OnInit {
  
   constructor(
     private fb: FormBuilder,
-    private vs: ValidatorService
+    private vs: ValidatorService,
+    private emailValidator: EmailValidatorService
   ) { }
 
   ngOnInit(): void {

@@ -35,7 +35,6 @@ export class ValidatorService {
         return {noEqualInputs: true}
       }
       
-      
       formGroup.get(input2)?.setErrors(null)
       return null;
     }
