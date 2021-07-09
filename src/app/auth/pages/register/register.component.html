@@ -92,6 +92,7 @@
           <div class="col">
               <button 
               type="submit"
+              [disabled]="myForm.pending"
               class="btn btn-primary float-end">
                   Create
               </button>
@@ -103,6 +104,8 @@
 </div>
 
 <h2>Form Valid: {{myForm.valid}}</h2>
+
+<h2>Form Status: {{myForm.status}}</h2>
 
 <h2>Form Errors:</h2>
 <pre>{{myForm.errors | json }}</pre>
