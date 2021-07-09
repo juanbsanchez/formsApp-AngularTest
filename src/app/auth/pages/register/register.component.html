@@ -32,19 +32,9 @@
           formControlName="email"
           class="form-control" placeholder="User Email" type="email" />
           <span 
-          *ngIf="emailRequired()"
+          
           class="form-text text-danger">
-            Email is required
-          </span>
-          <span 
-          *ngIf="emailPattern()"
-          class="form-text text-danger">
-            Email must to be email format
-          </span>
-          <span 
-          *ngIf="emailRegistered()"
-          class="form-text text-danger">
-            Email is already in use
+            {{ emailErrorMsg }}
           </span>
         </div>
       </div>

@@ -35,6 +35,20 @@ export class RegisterComponent implements OnInit {
   }, {
     validators: [this.vs.equalInputs('password', 'confirmPassword')]
   })
+
+
+  get emailErrorMsg(): string {
+    
+    const errors = this.myForm.get('email')?.errors;
+    if (errors?.required) {
+      return 'Email is required'
+    } else if (errors?.pattern) {
+      return 'Email must be email format';
+    } else if (errors?.emailRegistered) {
+      return 'Email is already in use';
+    }
+    return '';
+  }
  
   constructor(
     private fb: FormBuilder,
@@ -57,7 +71,7 @@ export class RegisterComponent implements OnInit {
       && this.myForm.get(input)?.touched;
   }
 
-  emailRequired() {
+  /* emailRequired() {
     return this.myForm.get('email')?.errors?.required
       && this.myForm.get('email')?.touched;
   }
@@ -70,7 +84,7 @@ export class RegisterComponent implements OnInit {
   emailRegistered() {
     return this.myForm.get('email')?.errors?.emailRegistered
       && this.myForm.get('email')?.touched;
-  } 
+  }  */
 
   submitForm() {
     console.log(this.myForm.value);
